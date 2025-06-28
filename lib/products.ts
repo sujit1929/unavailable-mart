@@ -1,6 +1,8 @@
-import { Product } from './store';
+// lib/products.ts
 
-// Mock product data with Unsplash images
+import { Product } from './store'; // Assuming Product interface is here
+
+// Mock product data generation function
 export const generateProducts = (): Product[] => {
   const categories = ['electronics', 'clothing', 'books', 'home_garden', 'sports', 'beauty'];
   const products: Product[] = [];
@@ -68,14 +70,15 @@ export const generateProducts = (): Product[] => {
     ]
   };
 
-  const unsplashCategories = {
-    electronics: 'technology',
-    clothing: 'fashion',
-    books: 'books',
-    home_garden: 'home',
-    sports: 'sports',
-    beauty: 'beauty'
-  };
+  // Unsplash categories are not directly used in the current image generation, but kept for context.
+  // const unsplashCategories = {
+  //   electronics: 'technology',
+  //   clothing: 'fashion',
+  //   books: 'books',
+  //   home_garden: 'home',
+  //   sports: 'sports',
+  //   beauty: 'beauty'
+  // };
 
   let productId = 1;
 
@@ -100,6 +103,11 @@ export const generateProducts = (): Product[] => {
 };
 
 export const mockProducts = generateProducts();
+
+// Add this new function:
+export const getAllProductIds = (): string[] => {
+  return mockProducts.map(product => product.id);
+};
 
 export const getProductsByCategory = (category: string): Product[] => {
   return mockProducts.filter(product => product.category === category);
